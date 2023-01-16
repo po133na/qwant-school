@@ -1,0 +1,103 @@
+const express = require("express");
+const basicAuth = require('express-basic-auth');
+const express = require('express');
+
+
+const app = express();
+const port = 8080;
+
+app.get("/", function (request, response) {
+    var randomSong = Math.floor(Math.random() * 20) + 1;
+    var songs = ["All By Myself", "Carolina in the Morning", "Day by Day", "All My Tomorrows", "All I Do Is Dream of You", "Falling In Love with Love",
+        "Fly Me to the Moon", "The Girl That I Marry", "Goodnight My Love", "I Can't Stop Loving You", "I Couldn't Sleep a Wink Last Night",
+        "I Dream of You", "I Left My Heart in San Francisco", "I See Your Face Before Me", "I Wish I Were in Love Again", "On a Little Street in Singapore", "Our Love Affair",
+        "P.S. I Love You", "The Second Time Around", "Somethin' Stupid"
+    ];
+response.send(songs[randomSong]);
+});
+app.get("/birth_date", function (request, response) {
+
+    response.send("December 12, 1915");
+})
+app.get("/birth_city", function (request, response) {
+
+    response.send("Hoboken, New Jersey");
+})
+app.get("/wives", function (request, response) {
+const basicAuth = require('express-basic-auth')
+
+    response.send("Nancy Barbato, Ava Gardner, Mia Farrow, Barbara Marx");
+})
+
+app.get("/picture", function (request, response) {
+app.get("/", (req, res)=> {
+    franksongs = ["All Alone", "All By Myself", "All I Do Is Dream of You", "All I Need is the Girl", "All My Tomorrows", "All of Me", "All of You", "All or Nothing at All", "All the Things You Are", "All the Way", "All the Way Home", "All This and Heaven Too", "All Through the Day", "Almost Like Being in Love", "Always", "America the Beautiful", "American Beauty Rose", 
+    "Among My Souvenirs", "Anything", "Barbara"];
+    randomsongs = franksongs[Math.floor(Math.random(" ") * franksongs.length)];
+    res.send(randomsongs);
+})
+
+    response.send("<img src = https://upload.wikimedia.org/wikipedia/commons/a/af/Frank_Sinatra_%2757.jpg>");
+app.get("/birth_date", (req, res)=> {
+    frankbirthday = "December 12, 1915";
+    //dont have to put inside variable, can simply just insert date directly inside of "res.send()"
+    res.send(frankbirthday);
+})
+
+app.get("/birth_city", (req, res)=> {
+    frankbirthcity= "Hoboken, New Jersey";
+     //dont have to put inside variable, can simply just insert city and state directly inside of "res.send()"
+    res.send(frankbirthcity);
+})
+
+app.get("/public", function (request, response) {
+    response.send("Everybody can see this page");
+app.get("/wives", (req, res)=> {
+    res.send("Nancy Barbato, Ava Gardner, Mia Farrow, Barbara Marx")
+})
+app.get("/picture", (req, res)=> {
+    //frankpicture = "https://upload.wikimedia.org/wikipedia/commons/a/af/Frank_Sinatra_%2757.jpg"
+    //can also place the variable above(frankpicture) inside redirect quotes
+    //if not using variable, you must have link in quotes still
+    res.redirect("https://upload.wikimedia.org/wikipedia/commons/a/af/Frank_Sinatra_%2757.jpg");
+})
+
+app.use(basicAuth({
+    users: {
+        admin: 'admin'
+    },
+    challenge: true, 
+    realm: 'foo',
+    unauthorizedResponse: () => {
+        return "Not authorized"
+    }
+
+}));
+app.get("/protected", function (request, response) {
+    response.send("Welcome, authenticated client");
+app.get("/public", (req, res)=> {
+    res.send("Everybody can see this page")
+})
+
+app.use(function (request, response) {
+    response.status(404).send('Page Not Found');
+});
+
+app.use(function (err, request, response) {
+    console.error(err.stack);
+    response.status(500).send('Error');
+});
+app.listen(port, () => {
+    console.log("Server listening on 8080")
+})
+app.use("/protected", basicAuth({
+    users: { 'admin': 'admin' },
+    challenge: true,
+    unauthorizedResponse: 'Not authorized',
+}))
+
+
+app.get("/protected", (req, res)=> {
+    res.send("Welcome, authenticated client")
+})
+app.listen(port, ()=> console.log("listening on port" + port))
