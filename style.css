@@ -1,0 +1,42 @@
+body {
+    margin: 0px !important;
+}
+.wrapper{
+    display:flex;
+    flex-wrap: wrap;
+    align-content: stretch;
+    height: 100vh;
+
+}
+.wrapper > div{
+    display: flex;
+    width: 100%
+    justify-content: center;
+    align-items: center;
+}
+.sidebar{
+    background: #800080;
+    width: 100%;
+}
+.footer{
+    background: #444444;
+    width: 100%;
+}
+.header{
+    background: #00B7EB;
+    width: 100%;
+}
+.hero{
+    background: #FF0000;
+    width: 100%;
+}
+.content{
+    background: #00FF00;
+    width: 100%;
+}
+@media screen and (min-width: 640px){
+    .wrapper > div.content, 
+    .wrapper > div.sidebar {
+        width: 50%;
+    }
+}
