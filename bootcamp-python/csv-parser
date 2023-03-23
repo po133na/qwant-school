@@ -1,0 +1,7 @@
+def my_csv_parser(csv_string, separator=','):
+    result = []
+    rows = csv_string.strip().split('\n')
+    for row in rows:
+        columns = row.split(separator)
+        result.append(columns)
+    return result
