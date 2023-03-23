@@ -1,0 +1,58 @@
+import datetime
+
+def age(txt):   #age change
+    list = txt.split(',') 
+  
+    if(int(list[5]) >= 1 and int(list[5]) <= 20 ):
+      list[5] = "1->20"
+    elif(int(list[5]) >= 21 and int(list[5]) <= 40 ):
+      list[5] = "21->40"
+    elif(int(list[5]) >= 41 and int(list[5]) <= 65 ):
+      list[5] = "41->65"
+    elif(int(list[5]) >= 66 and int(list[5]) <= 99 ):
+      list[5] = "66->99"
+    
+    transformed = ','.join(list)
+  
+    return transformed
+
+def mail(txt):      #mail change
+  list = txt.split(',')
+  
+  maillist = list[4].split('@')
+  list[4] = maillist[1]
+  
+  transformed = ','.join(list)
+  return transformed
+
+def time(txt):  #time change
+    list = txt.split(',')
+  
+    date_time_obj = datetime.datetime.strptime(list[9], '%Y-%m-%d %H:%M:%S')
+  
+    if(date_time_obj.hour >= 6 and date_time_obj.hour < 12):
+      list[9] = "morning"
+      
+    elif(date_time_obj.hour >= 12 and date_time_obj.hour < 18):
+      list[9] = "afternoon"
+      
+    elif(date_time_obj.hour >= 18 and date_time_obj.hour < 24):
+      list[9] = "evening"
+  
+    transformed = ','.join(list)
+    return transformed
+    
+#maindef
+def my_data_transform(txt):
+  list = txt.split('\n')
+  i = 1
+
+  while(i < len(list)-1):
+    list[i] = age(list[i])
+    list[i] = time(list[i])
+    list[i] = mail(list[i])
+    i += 1
+  
+  list.pop(len(list)-1)
+  
+  return list
