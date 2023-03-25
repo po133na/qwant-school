@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+ <html style='background-color: black'>
+ <div id="my_bouncing_box" style= "background-color: blue; border-radius: 3px; position: absolute; left: 0px; top: 0px; min-width: 100px; min-height: 100px; text-align: center; font-weight: bold; color: #999;" >stelmakh_p</div>
+ <script type="text/javascript">
+ 
+ var x1 = 0;
+ var y1 = 0;
+ var xsp = 1;
+ var ysp = 1;
+ var height = window.innerHeight;
+ 
+ var width = window.innerWidth;
+ 
+ 
+ boxie = document.getElementById("my_bouncing_box");
+ var id = setInterval(update, 0.5);
+ var r = document.getElementById("my_bouncing_box").style.border-radius;
+ function update(){
+ document.getElementById("my_bouncing_box").style.left = x1 + 'px';
+ document.getElementById("my_bouncing_box").style.top = y1 +'px';
+ if (x1 >width){xsp = 0-xsp;}
+ if (x1< 0){xsp = 0 - xsp;}
+ if (y1 > height){ysp = 0 - ysp;}
+ if (y1 < 0){ysp = 0 - ysp;}
+ 
+ x1 += xsp;
+ y1 += ysp;
+ }
+ </script>
+ </html>
