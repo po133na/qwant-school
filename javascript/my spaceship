@@ -1,0 +1,32 @@
+function my_spaceship(a){
+     let x = 0;
+     let y = 0;
+     let dir = 'up';
+     let dirs = ['up','right','down','left']
+     for (i in a){
+     n = a[i]
+     if (n == "R"){
+     index = dirs.indexOf(dir) + 1;
+     if (index < dirs.length && index > -1){
+     dir = dirs[index]
+     }else{
+     index = 0;
+     dir = dirs[index];
+     }
+     }else if (n == "L"){
+     index = dirs.indexOf(dir) - 1
+     if (index < dirs.length && index > -1){
+     dir = dirs[index]
+     } else {
+     index = 3;
+     dir = dirs[index]
+     }
+     }else if (n == "A"){
+     if (dir == 'up') y--
+     else if (dir == 'down') y++
+     else if (dir == 'left') x--
+     else if (dir == 'right') x++
+     }
+     }
+     return "{x: " + x + ", y: " + y + ", direction: '" + dir + "'}";
+      }
